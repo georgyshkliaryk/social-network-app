@@ -8,7 +8,7 @@ const Home = () => {
       <span class="material-icons">account_circle</span>
       <span class="material-icons-outlined">account_circle</span>
       <span class="material-icons-round settings">settings</span>
-    </div>
+    </div> 
   );
 };
 
