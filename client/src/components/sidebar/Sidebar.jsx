@@ -10,7 +10,9 @@ const Sidebar = () => {
             <span className="sidebar__item__text">Feed</span>
           </li>
           <li className="sidebar__item">
-            <span class="material-icons-outlined sidebar__icon">question_answer</span>
+            <span class="material-icons-outlined sidebar__icon">
+              question_answer
+            </span>
             <span className="sidebar__item__text">Chats</span>
           </li>
           <li className="sidebar__item">
@@ -19,84 +21,152 @@ const Sidebar = () => {
           </li>
         </ul>
         <button className="sidebar__button">Show more</button>
-        <hr className="sidebar__hr"/>
+        <hr className="sidebar__hr" />
         <ul className="sidebar__friends">
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li><li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li><li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li><li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li><li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
-            <li className="sidebar__friend">
-                <img src="/assets/person/2.jpeg" alt="friend image" className="sidebar__friend__image" />
-                <span className="sidebar__friend__name">Johny Doe</span>
-            </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
+          <li className="sidebar__friend">
+            <img
+              src="/assets/person/2.jpeg"
+              alt="friend"
+              className="sidebar__friend__image"
+            />
+            <span className="sidebar__friend__name">Johny Doe</span>
+          </li>
         </ul>
       </div>
     </div>
