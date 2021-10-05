@@ -4,15 +4,15 @@ const Topbar = () => {
   return (
     <div className="topbar__container">
       <div className="topbar__left">
-        <span className="logo">gSocial</span>
+        <span className="topbar__logo">gSocial</span>
       </div>
       <div className="topbar__center">
-        <div className="searchbar">
-          <span class="material-icons-outlined">search</span>
+        <div className="topbar__searchbar">
+          <span class="material-icons-outlined search__icon">search</span>
           <input
             type="text"
             placeholder="Search for friends, posts or videos"
-            className="search__input"
+            className="topbar__search__input"
           />
         </div>
       </div>
@@ -35,7 +35,7 @@ const Topbar = () => {
             <span className="topbar__item__icon__badge">4</span>
           </div>
         </div>
-        <img src="" alt="" className="topbar__image" />
+        <img src="/assets/person/8.jpeg" alt="avatar" className="topbar__image" />
       </div>
     </div>
   );
