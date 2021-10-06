@@ -6,17 +6,17 @@ const Sidebar = () => {
       <div className="sidebar__wrapper">
         <ul className="sidebar__list">
           <li className="sidebar__item">
-            <span class="material-icons-outlined sidebar__icon">feed</span>
+            <span className="material-icons-outlined sidebar__icon">feed</span>
             <span className="sidebar__item__text">Feed</span>
           </li>
           <li className="sidebar__item">
-            <span class="material-icons-outlined sidebar__icon">
+            <span className="material-icons-outlined sidebar__icon">
               question_answer
             </span>
             <span className="sidebar__item__text">Chats</span>
           </li>
           <li className="sidebar__item">
-            <span class="material-icons-outlined sidebar__icon">movie</span>
+            <span className="material-icons-outlined sidebar__icon">movie</span>
             <span className="sidebar__item__text">Videos</span>
           </li>
         </ul>

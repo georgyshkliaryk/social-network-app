@@ -8,7 +8,7 @@ const Topbar = () => {
       </div>
       <div className="topbar__center">
         <div className="topbar__searchbar">
-          <span class="material-icons-outlined search__icon">search</span>
+          <span className="material-icons-outlined search__icon">search</span>
           <input
             type="text"
             placeholder="Search for friends, posts or videos"
@@ -23,15 +23,15 @@ const Topbar = () => {
         </div>
         <div className="topbar__icons">
           <div className="topbar__icon__item">
-            <span class="material-icons-outlined">person_outline</span>
+            <span className="material-icons-outlined">person_outline</span>
             <span className="topbar__item__icon__badge">1</span>
           </div>
           <div className="topbar__icon__item">
-            <span class="material-icons-outlined">question_answer</span>
+            <span className="material-icons-outlined">question_answer</span>
             <span className="topbar__item__icon__badge">2</span>
           </div>
           <div className="topbar__icon__item">
-            <span class="material-icons-outlined">notifications</span>
+            <span className="material-icons-outlined">notifications</span>
             <span className="topbar__item__icon__badge">4</span>
           </div>
         </div>

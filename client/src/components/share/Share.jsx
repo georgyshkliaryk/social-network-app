@@ -20,19 +20,25 @@ const Share = () => {
         <div className="share__bottom">
           <div className="share__options">
             <div className="share__option">
-              <span class="material-icons share__icon tomato">perm_media</span>
+              <span className="material-icons share__icon tomato">
+                perm_media
+              </span>
               <span className="share__option__text">Photo or Video</span>
             </div>
             <div className="share__option">
-              <span class="material-icons share__icon blue">label</span>
+              <span className="material-icons share__icon blue">label</span>
               <span className="share__option__text">Tag</span>
             </div>
             <div className="share__option">
-              <span class="material-icons share__icon green">location_on</span>
+              <span className="material-icons share__icon green">
+                location_on
+              </span>
               <span className="share__option__text">Location</span>
             </div>
             <div className="share__option">
-              <span class="material-icons share__icon golden">emoji_emotions</span>
+              <span className="material-icons share__icon golden">
+                emoji_emotions
+              </span>
               <span className="share__option__text">Emotion</span>
             </div>
           </div>
