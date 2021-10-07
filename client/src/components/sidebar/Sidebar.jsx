@@ -1,3 +1,5 @@
+import { Users } from "../../dummyData";
+import Friends from "../Friends/Friends";
 import "./Sidebar.scss";
 
 const Sidebar = () => {
@@ -23,150 +25,9 @@ const Sidebar = () => {
         <button className="sidebar__button">Show more</button>
         <hr className="sidebar__hr" />
         <ul className="sidebar__friends">
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
-          <li className="sidebar__friend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt="friend"
-              className="sidebar__friend__image"
-            />
-            <span className="sidebar__friend__name">Johny Doe</span>
-          </li>
+          {Users.map(u => (
+            <Friends key={u.id} user={u} />
+          ))}
         </ul>
       </div>
     </div>
