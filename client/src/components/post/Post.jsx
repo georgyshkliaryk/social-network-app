@@ -5,11 +5,13 @@ import { useState } from "react";
 function Post({ post }) {
   const [like, setLike] = useState(post.like);
   const [isLiked, setIsLiked] = useState(false);
+  let [color, setColor] = useState(post.like);
 
   const likeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1);
+    setColor(isLiked ? color = "black" : color = "red");
     setIsLiked(!isLiked);
-  }
+  };
   return (
     <div className="post__container">
       <div className="post__wrapper">
@@ -35,7 +37,9 @@ function Post({ post }) {
         </div>
         <div className="post__bottom">
           <div className="post__bottom-left">
-            <img className="like__icon" src="/assets/heart.png" alt="like" onClick={likeHandler}/>
+            <span class="material-icons-outlined like noselect" onClick={likeHandler} style={{color}}>
+              favorite
+            </span>
             <span className="post__like-counter">{like} people like it</span>
           </div>
           <div className="post__bottom-right">

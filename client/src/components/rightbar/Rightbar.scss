@@ -70,3 +70,43 @@
   margin-bottom: 15px;
   font-size: 18px;
 }
+
+.rightbar__profile-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.rightbar__following-image {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.rightbar__info {
+  margin-bottom: 30px;
+}
+
+.rightbar__info-item {
+  margin-bottom: 10px;
+}
+
+.rightbar__info-key {
+  font-weight: bold;
+  margin-right: 15px;
+  color: #555;
+}
+
+.rightbar__followings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.rightbar__following {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  cursor: pointer;
+}

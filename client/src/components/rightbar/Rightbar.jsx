@@ -2,10 +2,10 @@ import "./Rightbar.scss";
 import { Users } from "../../dummyData";
 import OnlineFriends from "../onlineFriends/OnlineFriends";
 
-const Rightbar = () => {
-  return (
-    <div className="rightbar__container">
-      <div className="rightbar__wrapper">
+function Rightbar() {
+  const HomeRightbar = () => {
+    return (
+      <>
         <div className="birthday__container">
           <img
             src="/assets/gift.png"
@@ -19,13 +19,69 @@ const Rightbar = () => {
         <img src="/assets/ad.png" alt="ad" className="rightbar__ad" />
         <h4 className="rightbar__title">Friends Online</h4>
         <ul className="rightbar__friend__list">
-          {Users.map(u => (
+          {Users.map((u) => (
             <OnlineFriends key={u.id} user={u} />
           ))}
         </ul>
+      </>
+    );
+  };
+
+  const ProfileRightbar = () => {
+    return(
+      <>
+        <h4 className="rightbar__profile-title">User Information</h4>
+        <div className="rightbar__info">
+          <div className="rightbar__info-item">
+            <span className="rightbar__info-key">City:</span>
+            <span className="rightbar__info-value">Minsk</span>
+          </div>
+          <div className="rightbar__info-item">
+            <span className="rightbar__info-key">From:</span>
+            <span className="rightbar__info-value">Minsk</span>
+          </div>
+          <div className="rightbar__info-item">
+            <span className="rightbar__info-key">Relarionship:</span>
+            <span className="rightbar__info-value">Single</span>
+          </div>
+        </div>
+        <h4 className="rightbar__title">Friends</h4> 
+        <div className="rightbar__followings">
+          <div className="rightbar__following">
+            <img src="/assets/person/1.jpeg" alt="friend" className="rightbar__following-image"/>
+            <span className="rightbar__following-name">Lars Carter</span>
+          </div>
+          <div className="rightbar__following">
+            <img src="/assets/person/1.jpeg" alt="friend" className="rightbar__following-image"/>
+            <span className="rightbar__following-name">Lars Carter</span>
+          </div>
+          <div className="rightbar__following">
+            <img src="/assets/person/1.jpeg" alt="friend" className="rightbar__following-image"/>
+            <span className="rightbar__following-name">Lars Carter</span>
+          </div>
+          <div className="rightbar__following">
+            <img src="/assets/person/1.jpeg" alt="friend" className="rightbar__following-image"/>
+            <span className="rightbar__following-name">Lars Carter</span>
+          </div>
+          <div className="rightbar__following">
+            <img src="/assets/person/1.jpeg" alt="friend" className="rightbar__following-image"/>
+            <span className="rightbar__following-name">Lars Carter</span>
+          </div>
+          <div className="rightbar__following">
+            <img src="/assets/person/1.jpeg" alt="friend" className="rightbar__following-image"/>
+            <span className="rightbar__following-name">Lars Carter</span>
+          </div>
+        </div>
+      </>
+    )
+  }
+  return (
+    <div className="rightbar__container">
+      <div className="rightbar__wrapper">
+        <ProfileRightbar />
       </div>
     </div>
   );
-};
+}
 
 export default Rightbar;
