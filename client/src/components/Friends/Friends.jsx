@@ -1,8 +1,10 @@
 function Friends({ user }) {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <li className="sidebar__friend">
       <img
-        src={user.profilePicture}
+        src={PF + user.profilePicture}
         alt="friend"
         className="sidebar__friend__image"
       />

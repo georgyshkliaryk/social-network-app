@@ -7,14 +7,24 @@ const morgan = require("morgan");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
+const cors = require("cors");
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true }, () => {
-    console.log("Connected to MongoDB!");
-});
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to the database!");
+  })
+  .catch(() => {
+    console.log("Connection to the database failed!");
+  });
 
 //middlewares
+app.use(cors());
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
@@ -23,6 +33,6 @@ app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
 
-app.listen(8080, () => {
-    console.log("Server is running...");
+app.listen(8800, () => {
+  console.log("Server is running...");
 });

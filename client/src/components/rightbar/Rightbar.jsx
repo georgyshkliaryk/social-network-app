@@ -19,7 +19,7 @@ function Rightbar({ profile }) {
         <img src="/assets/ad.png" alt="ad" className="rightbar__ad" />
         <h4 className="rightbar__title">Friends Online</h4>
         <ul className="rightbar__friend__list">
-          {Users.map((u) => (
+          {Users.map((u) => ( 
             <OnlineFriends key={u.id} user={u} />
           ))}
         </ul>

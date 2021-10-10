@@ -1,10 +1,13 @@
 import "./Topbar.scss";
+import { Link } from "react-router-dom";
 
 const Topbar = () => {
   return (
     <div className="topbar__container">
       <div className="topbar__left">
-        <span className="topbar__logo">gSocial</span>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="topbar__logo">gSocial</span>
+        </Link>
       </div>
       <div className="topbar__center">
         <div className="topbar__searchbar">
@@ -35,7 +38,11 @@ const Topbar = () => {
             <span className="topbar__item__icon__badge">4</span>
           </div>
         </div>
-        <img src="/assets/person/8.jpeg" alt="avatar" className="topbar__image" />
+        <img
+          src="/assets/person/8.jpeg"
+          alt="avatar"
+          className="topbar__image"
+        />
       </div>
     </div>
   );
