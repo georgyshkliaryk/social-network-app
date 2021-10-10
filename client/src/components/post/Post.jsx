@@ -2,6 +2,7 @@ import "./Post.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
+import { Link } from "react-router-dom";
 
 function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
@@ -13,7 +14,7 @@ function Post({ post }) {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`users/${post.userId}`);
+      const res = await axios.get(`/users?userId=${post.userId}`);
       setUser(res.data);
     };
 
@@ -30,12 +31,16 @@ function Post({ post }) {
       <div className="post__wrapper">
         <div className="post__top">
           <div className="post__top-left">
-            <img
-              className="post__profile-image"
-              src={user.profilePicture || PF + "person/noAvatar.png"}
-              alt="post profile"
-            />
-            <span className="post__username">{user.username}</span>
+            <Link to={`profile/${user.username}`}>
+              <img
+                className="post__profile-image"
+                src={user.profilePicture || "/assets/person/noAvatar.png"}
+                alt="post profile"
+              />
+            </Link>
+            <Link to={`profile/${user.username}`} style={{textDecoration: "none", color: "black"}}>
+              <span className="post__username">{user.username}</span>
+            </Link>
             <span className="post__date">{format(post.createdAt)}</span>
           </div>
           <div className="post__top-right">

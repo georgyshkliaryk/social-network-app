@@ -4,17 +4,19 @@ import "./Feed.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Feed = () => {
+const Feed = ({ username }) => {
   const [posts, setPost] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("posts/timeline/616212dd8bbd3ebd2486d5cd");
+      const res = username
+        ? await axios.get("/posts/profile/" + username)
+        : await axios.get("/posts/timeline/616212dd8bbd3ebd2486d5cd");
       setPost(res.data);
     };
 
     fetchPosts();
-  }, []);
+  }, [username]);
   return (
     <div className="feed__container">
       <div className="feed__wrapper">
