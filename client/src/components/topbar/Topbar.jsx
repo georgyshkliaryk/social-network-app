@@ -1,7 +1,10 @@
 import "./Topbar.scss";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Topbar = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="topbar__container">
       <div className="topbar__left">
@@ -38,11 +41,17 @@ const Topbar = () => {
             <span className="topbar__item__icon__badge">4</span>
           </div>
         </div>
+        <Link to={`/profile/${user.username}`}>
         <img
-          src="/assets/person/8.jpeg"
+          src={
+            user.profilePicture
+              ? `/assets/${user.profilePicture}`
+              : "/assets/person/noAvatar.png"
+          }
           alt="avatar"
           className="topbar__image"
         />
+        </Link> 
       </div>
     </div>
   );
