@@ -1,16 +1,24 @@
 import "./Post.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   let [color, setColor] = useState(post.likes.length);
   const [user, setUser] = useState({});
+  const { user: currentUser } = useContext(AuthContext);
 
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  useEffect(() => {
+    setIsLiked(post.likes.includes(currentUser._id));
+  }, [currentUser._id, post.likes]);
+
+  useEffect(() => {
+    setColor(post.likes.includes(currentUser._id) ? (color = "red") : (color = "black"));
+  }, [currentUser._id, post.likes]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -22,6 +30,9 @@ function Post({ post }) {
   }, [post.userId]);
 
   const likeHandler = () => {
+    try {
+      axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
+    } catch (err) {}
     setLike(isLiked ? like - 1 : like + 1);
     setColor(isLiked ? (color = "black") : (color = "red"));
     setIsLiked(!isLiked);
@@ -34,11 +45,18 @@ function Post({ post }) {
             <Link to={`profile/${user.username}`}>
               <img
                 className="post__profile-image"
-                src={user.profilePicture || "/assets/person/noAvatar.png"}
+                src={
+                  user.profilePicture
+                    ? "/assets/" + user.profilePicture
+                    : "/assets/person/noAvatar.png"
+                }
                 alt="post profile"
               />
             </Link>
-            <Link to={`profile/${user.username}`} style={{textDecoration: "none", color: "black"}}>
+            <Link
+              to={`profile/${user.username}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
               <span className="post__username">{user.username}</span>
             </Link>
             <span className="post__date">{format(post.createdAt)}</span>
@@ -49,7 +67,11 @@ function Post({ post }) {
         </div>
         <div className="post__center">
           <span className="post__text">{post?.desc}</span>
-          <img className="post__image" src={PF + post.img} alt="" />
+          <img
+            className="post__image"
+            src={"/assets/" + post.img}
+            alt=""
+          />
         </div>
         <div className="post__bottom">
           <div className="post__bottom-left">
