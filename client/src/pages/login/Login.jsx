@@ -1,14 +1,22 @@
 import "./Login.scss";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import { loginCall } from "../../apiCalls";
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
   const email = useRef();
   const password = useRef();
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(email.current.value);
+    loginCall(
+      { email: email.current.value, password: password.current.value },
+      dispatch
+    );
   };
+
+  console.log(user);
   return (
     <div className="login__container">
       <div className="login__wrapper">
@@ -37,10 +45,20 @@ const Login = () => {
               required
               minLength="6"
             />
-            <button className="login__button">Log in</button>
+            <button className="login__button" type="submit" disabled={isFetching}>
+              {isFetching ? (
+                <span class="material-icons-outlined sync-icon">sync</span>
+              ) : (
+                "Log in"
+              )}
+            </button>
             <span className="login__forgot">Forgot Password?</span>
             <button className="login-register__button">
-              Create new account
+            {isFetching ? (
+                <span class="material-icons-outlined sync-icon">sync</span>
+              ) : (
+                "Create new Account"
+              )}
             </button>
           </form>
         </div>

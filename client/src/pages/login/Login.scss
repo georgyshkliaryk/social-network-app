@@ -70,6 +70,10 @@
   cursor: pointer;
 }
 
+.login__button:disabled {
+  cursor: not-allowed;
+}
+
 .login__forgot {
   text-align: center;
   color: #555;
@@ -87,4 +91,28 @@
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.sync-icon {
+  vertical-align: -8px;
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
