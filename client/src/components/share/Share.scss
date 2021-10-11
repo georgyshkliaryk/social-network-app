@@ -20,6 +20,8 @@
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
+    margin-left: 5px;
+    margin-top: 5px;
 }
 
 .share__input {
@@ -53,6 +55,8 @@
     align-items: center;
     margin-right: 15px;
     cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
 
     .tomato {
         color: tomato;
@@ -66,6 +70,10 @@
     .golden {
         color: goldenrod;
     }
+}
+
+.share__option:hover {
+    background-color: rgb(219, 219, 219);
 }
 
 .share__icon {
