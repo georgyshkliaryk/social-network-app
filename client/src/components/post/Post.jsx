@@ -11,6 +11,7 @@ function Post({ post }) {
   let [color, setColor] = useState(post.likes.length);
   const [user, setUser] = useState({});
   const { user: currentUser } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
@@ -42,22 +43,22 @@ function Post({ post }) {
       <div className="post__wrapper">
         <div className="post__top">
           <div className="post__top-left">
-            <Link to={`profile/${user.username}`}>
+            <Link to={`profile/${currentUser.username}`}>
               <img
                 className="post__profile-image"
                 src={
-                  user.profilePicture
-                    ? "/assets/" + user.profilePicture
-                    : "/assets/person/noAvatar.png"
+                  currentUser.profilePicture
+                    ? PF + currentUser.profilePicture
+                    : PF + "person/noAvatar.png"
                 }
                 alt="post profile"
               />
             </Link>
             <Link
-              to={`profile/${user.username}`}
+              to={`profile/${currentUser.username}`}
               style={{ textDecoration: "none", color: "black" }}
             >
-              <span className="post__username">{user.username}</span>
+              <span className="post__username">{currentUser.username}</span>
             </Link>
             <span className="post__date">{format(post.createdAt)}</span>
           </div>
@@ -69,7 +70,7 @@ function Post({ post }) {
           <span className="post__text">{post?.desc}</span>
           <img
             className="post__image"
-            src={"/assets/" + post.img}
+            src={PF + post.img}
             alt=""
           />
         </div>

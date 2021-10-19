@@ -3,11 +3,13 @@ import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
   user: {
-    _id: "616212dd8bbd3ebd2486d5cd",
+    _id: "61641f4d92095c9f3609d54c",
     username: "george",
     email: "george@mail",
-    profilePicture: "person/1.jpeg",
+    profilePicture: "person/5.jpeg",
     coverPicture: "",
+    city: "minsk",
+    desc: "im gregor",
     isAdmin: false,
     followers: [],
     followings: ["616212dd8bbd3ebd2486d5cd"],

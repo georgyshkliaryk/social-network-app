@@ -7,6 +7,7 @@ const Share = () => {
   const { user } = useContext(AuthContext);
   const desc = useRef();
   const [file, setFile] = useState(null);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,35 +15,47 @@ const Share = () => {
       userId: user._id,
       desc: desc.current.value,
     };
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("file", file);
+      newPost.img = fileName;
+      try {
+        await axios.post("/upload", data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
 
     try {
       await axios.post("/posts", newPost);
+      window.location.reload();
     } catch (err) {}
   };
 
   return (
     <div className="share__container">
-      <form className="share__wrapper" onClick={handleSubmit}>
+      <div className="share__wrapper">
         <div className="share__top">
           <img
             src={
               user.profilePicture
-                ? "/assets/" + user.profilePicture
-                : "/assets/person/noAvatar.png"
+                ? PF + user.profilePicture
+                : PF + "person/noAvatar.png"
             }
             className="share__profile-image"
-            alt="avatar"
+            alt="avatar" 
           />
           <input
             type="text"
             placeholder={"What's on your mind " + user.username + "?"}
             className="share__input"
             ref={desc}
-            required
-          />
+          /> 
         </div>
         <hr className="share__hr" />
-        <div className="share__bottom">
+        <form className="share__bottom" onSubmit={handleSubmit}>
           <div className="share__options">
             <label htmlFor="file" className="share__option">
               <span className="material-icons share__icon tomato">
@@ -51,7 +64,7 @@ const Share = () => {
               <span className="share__option__text">Photo or Video</span>
               <input
                 type="file"
-                id="file"
+                id="file" 
                 accept=".png,.jpeg,.jpg"
                 onChange={(e) => setFile(e.target.files[0])}
                 style={{ display: "none" }}
@@ -77,8 +90,8 @@ const Share = () => {
           <button className="share__button" type="submit">
             Share
           </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };

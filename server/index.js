@@ -8,7 +8,8 @@ const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
 const multer = require("multer");
-// const cors = require("cors");
+const path = require("path");
+const cors = require("cors");
 
 dotenv.config();
 
@@ -22,32 +23,34 @@ mongoose
   })
   .catch(() => {
     console.log("Connection to the database failed!");
-  });
+  }); 
+
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 //middlewares
-// app.use(cors());
+// app.use(cors()); 
 app.use(express.json());
-app.use(helmet());
+app.use(helmet()); 
 app.use(morgan("common"));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/images");
+    cb(null, "public/images"); 
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    cb(null, req.body.name);
   },
 });
-//file uploading
-const upload = multer({ storage });
+
+const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
-    return res.status(200).json("File uploaded successfully!");
-  } catch (err) {
-    console.log(err);
+    return res.status(200).json("File uploded successfully");
+  } catch (error) {
+    console.error(error);
   }
 });
-
+ 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
