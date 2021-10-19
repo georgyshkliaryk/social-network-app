@@ -9,7 +9,7 @@ const Share = () => {
   const [file, setFile] = useState(null);
 
   const handleSubmit = async (e) => {
-   // e.preventDefault();
+    e.preventDefault();
     const newPost = {
       userId: user._id,
       desc: desc.current.value,
