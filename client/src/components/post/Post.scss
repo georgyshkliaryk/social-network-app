@@ -33,6 +33,10 @@
   margin: 0 10px;
 }
 
+.post__username:hover {
+  border-bottom: 1px solid black;
+}
+
 .post__date {
   font-size: 12px;
 }

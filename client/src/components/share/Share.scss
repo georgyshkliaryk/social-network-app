@@ -21,6 +21,11 @@
     margin-right: 10px;
     margin-left: 5px;
     margin-top: 5px;
+    border: 2px solid white;
+}
+
+.share__profile-image:hover {
+    border: 2px solid rgb(167, 110, 214);
 }
 
 .share__input {
@@ -34,7 +39,7 @@
 }
 
 .share__hr {
-    margin: 20px;
+    margin: 20px 20px 0 20px;
 }
 
 .share__bottom {
@@ -91,8 +96,12 @@
     margin-right: 20px;
     cursor: pointer;
     color: white;
-    background-color: rgb(133, 87, 170);
+    background-color: rgb(167, 110, 214);
     font-size: 16px;
+}
+
+.share__button:hover {
+    background-color: rgb(133, 87, 170);
 }
 
 .share__img-container {
@@ -101,7 +110,8 @@
 }
 
 .share__img {
-    width: 100%;
+    //width: 100%;
+    max-height: 200px;
     object-fit: cover;
 }
 
@@ -116,4 +126,10 @@
 .red {
     color: red;
     font-size: 30px;
+}
+
+.share__error {
+    color: red;
+    font-size: 12px;
+    margin: 0 0 20px 20px;
 }

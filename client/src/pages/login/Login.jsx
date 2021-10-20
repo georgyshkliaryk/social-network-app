@@ -2,6 +2,7 @@ import "./Login.scss";
 import { useRef, useContext } from "react";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const email = useRef();
@@ -45,7 +46,11 @@ const Login = () => {
               required
               minLength="6"
             />
-            <button className="login__button" type="submit" disabled={isFetching}>
+            <button
+              className="login__button"
+              type="submit"
+              disabled={isFetching}
+            >
               {isFetching ? (
                 <span class="material-icons-outlined sync-icon">sync</span>
               ) : (
@@ -53,13 +58,15 @@ const Login = () => {
               )}
             </button>
             <span className="login__forgot">Forgot Password?</span>
-            <button className="login-register__button">
-            {isFetching ? (
-                <span class="material-icons-outlined sync-icon">sync</span>
-              ) : (
-                "Create new Account"
-              )}
-            </button>
+            <Link to="/register">
+              <button className="login-register__button">
+                {isFetching ? (
+                  <span class="material-icons-outlined sync-icon">sync</span>
+                ) : (
+                  "Create new Account"
+                )}
+              </button>
+            </Link>
           </form>
         </div>
       </div>

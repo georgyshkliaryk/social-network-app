@@ -2,6 +2,7 @@ import "../login/Login.scss";
 import { useRef, useContext } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const username = useRef();
@@ -72,10 +73,15 @@ const Register = () => {
               ref={passwordAgain}
               required
             />
+
             <button className="login__button" type="submit">
               Sign Up
             </button>
-            <button className="login-register__button">Log into Account</button>
+            <Link to="/login">
+              <button className="login-register__button">
+                Log into Account
+              </button>
+            </Link>
           </form>
         </div>
       </div>

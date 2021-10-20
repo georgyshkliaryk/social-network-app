@@ -2,12 +2,14 @@ import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "./Share.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Share = () => {
   const { user } = useContext(AuthContext);
   const desc = useRef();
   const [file, setFile] = useState(null);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [warning, setWarning] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,8 +31,13 @@ const Share = () => {
     }
 
     try {
-      await axios.post("/posts", newPost);
-      window.location.reload();
+      if (desc.current.value != "" || file) {
+        setWarning("");
+        await axios.post("/posts", newPost);
+        window.location.reload();
+      } else {
+        setWarning("Please write something or add a photo!");
+      }
     } catch (err) {}
   };
 
@@ -38,28 +45,31 @@ const Share = () => {
     <div className="share__container">
       <div className="share__wrapper">
         <div className="share__top">
-          <img
-            src={
-              user.profilePicture
-                ? PF + user.profilePicture
-                : PF + "person/noAvatar.png"
-            }
-            className="share__profile-image"
-            alt="avatar"
-          />
+          <Link to={`/profile/${user.username}`}>
+            <img
+              src={
+                user.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + "person/noAvatar.png"
+              }
+              className="share__profile-image"
+              alt="avatar"
+            />
+          </Link>
           <input
             type="text"
-            placeholder={"What's on your mind " + user.username + "?"}
+            placeholder={"What's on your mind, " + user.username + "?"}
             className="share__input"
             ref={desc}
           />
         </div>
         <hr className="share__hr" />
+        <span className="share__error">{warning}</span>
         {file && (
           <div className="share__img-container">
             <img
               src={URL.createObjectURL(file)}
-              alt="mini-img"
+              alt="preview"
               className="share__img"
             />
             <button
