@@ -5,6 +5,11 @@ import { AuthContext } from "../../context/AuthContext";
 
 const Topbar = () => {
   const { user } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    localStorage.setItem("user", null);
+    window.location.reload();
+  };
   return (
     <div className="topbar__container">
       <div className="topbar__left">
@@ -41,17 +46,20 @@ const Topbar = () => {
             <span className="topbar__item__icon__badge">4</span>
           </div>
         </div>
-        <Link to={`/profile/${user.username}`}>
-        <img
-          src={
-            user.profilePicture
-              ? `/assets/${user.profilePicture}`
-              : "/assets/person/noAvatar.png"
-          }
-          alt="avatar"
-          className="topbar__image"
-        />
-        </Link> 
+        <Link to={`/profile/${user?.username}`}>
+          <img
+            src={
+              user?.profilePicture
+                ? `/assets/${user?.profilePicture}`
+                : "/assets/person/noAvatar.png"
+            }
+            alt="avatar"
+            className="topbar__image"
+          />
+        </Link>
+        <div className="topbar__logout" onClick={handleLogout} title="Logout">
+          <span class="material-icons">logout</span>
+        </div>
       </div>
     </div>
   );
