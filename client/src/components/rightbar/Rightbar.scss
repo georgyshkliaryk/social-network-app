@@ -82,6 +82,7 @@
   height: 90px;
   object-fit: cover;
   border-radius: 10px;
+  border-radius: 20px;
 }
 
 .rightbar__info {
@@ -109,4 +110,16 @@
   flex-direction: column;
   margin-bottom: 20px;
   cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid rgb(167, 110, 214);
+  border-radius: 10px;
+}
+
+.rightbar__following:hover {
+  transform: scale(1.1);
+}
+
+.rightbar__following-name {
+  margin-top: 8px;
 }

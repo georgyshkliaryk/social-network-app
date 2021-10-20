@@ -43,22 +43,22 @@ function Post({ post }) {
       <div className="post__wrapper">
         <div className="post__top">
           <div className="post__top-left">
-            <Link to={`profile/${currentUser.username}`}>
+            <Link to={`profile/${user.username}`}>
               <img
                 className="post__profile-image"
                 src={
-                  currentUser.profilePicture
-                    ? PF + currentUser.profilePicture
+                  user.profilePicture
+                    ? PF + user.profilePicture
                     : PF + "person/noAvatar.png"
                 }
                 alt="post profile"
               />
             </Link>
             <Link
-              to={`profile/${currentUser.username}`}
+              to={`profile/${user.username}`}
               style={{ textDecoration: "none", color: "black" }}
             >
-              <span className="post__username">{currentUser.username}</span>
+              <span className="post__username">{user.username}</span>
             </Link>
             <span className="post__date">{format(post.createdAt)}</span>
           </div>

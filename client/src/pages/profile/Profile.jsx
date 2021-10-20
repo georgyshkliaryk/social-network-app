@@ -33,23 +33,23 @@ const Profile = () => {
             <div className="profile__cover">
               <img
                 className="profile__cover-image"
-                src={currentUser.coverPicture ? PF + currentUser.coverPicture : PF +  "person/noCover.png"}
+                src={user.coverPicture ? PF + user.coverPicture : PF +  "person/noCover.png"}
                 alt="cover"
               />
               <img
                 className="profile__user-image"
-                src={currentUser.profilePicture ? PF + currentUser.profilePicture : PF + "person/noAvatar.png"}
+                src={user.profilePicture ? PF + user.profilePicture : PF + "person/noAvatar.png"}
                 alt="avatar"
               />
             </div>
             <div className="profile__info">
-              <h4 className="profile__info-name">{currentUser.username}</h4>
-              <span className="profile__info-desc">{currentUser.desc}</span>
+              <h4 className="profile__info-name">{user.username}</h4>
+              <span className="profile__info-desc">{user.desc}</span>
             </div>
           </div>
           <div className="profile__right-bottom">
             <Feed username={params.username} />
-            <Rightbar user={currentUser} />
+            <Rightbar user={user} />
           </div>
         </div>
       </div>
