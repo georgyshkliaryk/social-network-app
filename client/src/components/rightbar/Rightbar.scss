@@ -81,8 +81,7 @@
   width: 90px;
   height: 90px;
   object-fit: cover;
-  border-radius: 10px;
-  border-radius: 20px;
+  border-radius: 8px;
 }
 
 .rightbar__info {
@@ -102,18 +101,19 @@
 .rightbar__followings {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: left;
 }
 
 .rightbar__following {
+  padding: 3px 6px;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
   cursor: pointer;
   font-weight: bold;
   text-align: center;
-  border: 2px solid rgb(167, 110, 214);
-  border-radius: 10px;
+ // border: 2px solid rgb(167, 110, 214);
+ // border-radius: 10px;
 }
 
 .rightbar__following:hover {
@@ -122,4 +122,20 @@
 
 .rightbar__following-name {
   margin-top: 8px;
+}
+
+.rightbar__follow-btn {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: rgb(167, 110, 214);
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+
 }

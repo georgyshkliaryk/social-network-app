@@ -12,7 +12,7 @@ const INITIAL_STATE = {
     desc: "im gregor",
     isAdmin: false,
     followers: [],
-    followings: ["616212dd8bbd3ebd2486d5cd"],
+    followings: [],
   },
   isFetching: false,
   error: false,

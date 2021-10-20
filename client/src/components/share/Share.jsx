@@ -45,28 +45,48 @@ const Share = () => {
                 : PF + "person/noAvatar.png"
             }
             className="share__profile-image"
-            alt="avatar" 
+            alt="avatar"
           />
           <input
             type="text"
             placeholder={"What's on your mind " + user.username + "?"}
             className="share__input"
             ref={desc}
-          /> 
+          />
         </div>
         <hr className="share__hr" />
+        {file && (
+          <div className="share__img-container">
+            <img
+              src={URL.createObjectURL(file)}
+              alt="mini-img"
+              className="share__img"
+            />
+            <button
+              className="share__cancel-btn"
+              onClick={() => {
+                setFile(null);
+              }}
+            >
+              <span class="material-icons-outlined red">delete</span>
+            </button>
+          </div>
+        )}
         <form className="share__bottom" onSubmit={handleSubmit}>
           <div className="share__options">
-            <label htmlFor="file" className="share__option">
+            <label htmlFor="file-id" className="share__option">
               <span className="material-icons share__icon tomato">
                 perm_media
               </span>
               <span className="share__option__text">Photo or Video</span>
               <input
                 type="file"
-                id="file" 
+                id="file-id"
                 accept=".png,.jpeg,.jpg"
-                onChange={(e) => setFile(e.target.files[0])}
+                onChange={(e) => {
+                  setFile(e.target.files[0]);
+                }}
+                onClick={(e) => (e.target.value = null)}
                 style={{ display: "none" }}
               />
             </label>
