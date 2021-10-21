@@ -31,8 +31,10 @@ const Topbar = () => {
       </div>
       <div className="topbar__right">
         <div className="topbar__links">
-          <span className="topbar__link">Homepage</span>
-          <span className="topbar__link">Feed</span>
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            <span className="topbar__link">Feed</span>
+          </Link>
+          <span className="topbar__link">Chats</span>
         </div>
         <div className="topbar__icons">
           <div className="topbar__icon__item">

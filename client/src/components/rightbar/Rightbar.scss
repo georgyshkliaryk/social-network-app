@@ -14,6 +14,12 @@
 
 .birthday__text {
   font-size: 15px;
+  b {
+    cursor: pointer;
+  }
+  b:hover {
+    text-decoration: underline;
+  }
 }
 
 .birthday__container {
