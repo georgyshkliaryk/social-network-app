@@ -18,7 +18,9 @@ function Post({ post }) {
   }, [currentUser._id, post.likes]);
 
   useEffect(() => {
-    setColor(post.likes.includes(currentUser._id) ? (color = "red") : (color = "black"));
+    setColor(
+      post.likes.includes(currentUser._id) ? (color = "red") : (color = "black")
+    );
   }, [currentUser._id, post.likes]);
 
   useEffect(() => {
@@ -33,10 +35,25 @@ function Post({ post }) {
   const likeHandler = () => {
     try {
       axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
     setLike(isLiked ? like - 1 : like + 1);
     setColor(isLiked ? (color = "black") : (color = "red"));
     setIsLiked(!isLiked);
+  };
+
+  const handleDeletePost = async (e) => {
+    e.preventDefault();
+    try {
+      const data = {
+        userId: currentUser._id,
+      };
+      await axios.delete("/posts/" + post._id, { data });
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="post__container">
@@ -63,16 +80,21 @@ function Post({ post }) {
             <span className="post__date">{format(post.createdAt)}</span>
           </div>
           <div className="post__top-right">
-            <span className="material-icons">more_vert</span>
+            <span className="material-icons post__top-right-icon">
+              more_vert
+            </span>
+            <span className="material-icons post__top-right-icon">edit</span>
+            <span
+              className="material-icons post__top-right-icon"
+              onClick={handleDeletePost}
+            >
+              delete
+            </span>
           </div>
         </div>
         <div className="post__center">
           <span className="post__text">{post?.desc}</span>
-          <img
-            className="post__image"
-            src={PF + post.img}
-            alt=""
-          />
+          <img className="post__image" src={PF + post.img} alt="" />
         </div>
         <div className="post__bottom">
           <div className="post__bottom-left">

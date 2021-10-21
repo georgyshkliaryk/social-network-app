@@ -42,6 +42,9 @@ const Login = () => {
               className="login__input"
               ref={email}
               required
+              onChange={() => {
+                setWarning("\xa0");
+              }}
             />
             <input
               type="text"
@@ -51,6 +54,9 @@ const Login = () => {
               ref={password}
               required
               minLength="6"
+              onChange={() => {
+                setWarning("\xa0");
+              }}
             />
             <button
               className="login__button"

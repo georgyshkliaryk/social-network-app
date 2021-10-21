@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Friends({ user }) {
+function Friends({ user, isFriends }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
@@ -19,6 +19,11 @@ function Friends({ user }) {
           className="sidebar__friend__image"
         />
         <span className="sidebar__friend__name">{user.username}</span>
+        {isFriends && (
+          <span className="material-icons sidebar__is-friend" title="Friends">
+            people
+          </span>
+        )}
       </li>
     </Link>
   );

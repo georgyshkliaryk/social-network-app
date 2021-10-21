@@ -1,5 +1,5 @@
 import "../login/Login.scss";
-import { useRef, useContext } from "react";
+import { useRef, useContext, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
@@ -11,10 +11,13 @@ const Register = () => {
   const passwordAgain = useRef();
   const history = useHistory();
 
+  const [warning, setWarning] = useState("\xa0");
+
   const handleClick = async (e) => {
     e.preventDefault();
     if (passwordAgain.current.value !== password.current.value) {
-      passwordAgain.current.setCustomValidity("Passwords don't match!");
+      //passwordAgain.current.setCustomValidity("Passwords don't match!");
+      setWarning("Passwords doent match!");
     } else {
       const user = {
         username: username.current.value,
@@ -23,8 +26,10 @@ const Register = () => {
       };
       try {
         await axios.post("/auth/register", user);
+        setWarning("\xa0");
         history.push("/login");
       } catch (err) {
+        setWarning("Username or Email is already taken!");
         console.log(err);
       }
     }
@@ -47,6 +52,9 @@ const Register = () => {
               className="login__input"
               ref={username}
               required
+              onChange={() => {
+                setWarning("\xa0");
+              }}
             />
             <input
               type="text"
@@ -55,6 +63,9 @@ const Register = () => {
               className="login__input"
               ref={email}
               required
+              onChange={() => {
+                setWarning("\xa0");
+              }}
             />
             <input
               type="text"
@@ -64,6 +75,9 @@ const Register = () => {
               ref={password}
               required
               minLength="6"
+              onChange={() => {
+                setWarning("\xa0");
+              }}
             />
             <input
               type="text"
@@ -72,6 +86,9 @@ const Register = () => {
               className="login__input"
               ref={passwordAgain}
               required
+              onChange={() => {
+                setWarning("\xa0");
+              }}
             />
 
             <button className="login__button" type="submit">
@@ -83,6 +100,7 @@ const Register = () => {
               </button>
             </Link>
           </form>
+          <span className="login__error">{warning}</span>
         </div>
       </div>
     </div>

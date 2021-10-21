@@ -15,7 +15,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(174, 76, 255);
+  background: rgb(196, 196, 196);
 }
 
 .sidebar__wrapper {
@@ -87,4 +87,8 @@
 
 .sidebar__friend:hover {
   border-bottom: 1px solid black;
+}
+
+.sidebar__is-friend {
+  margin-left: 25px;
 }
