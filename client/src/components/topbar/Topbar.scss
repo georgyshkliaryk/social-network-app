@@ -11,6 +11,7 @@
 
 .topbar__left {
   flex: 3;
+  margin-left: 25px;
 }
 
 .topbar__center {
@@ -100,8 +101,14 @@
 
 .topbar__logout {
   cursor: pointer;
+  margin-left: 25px;
 }
 
 .topbar__logout:hover {
   color: rgb(219, 219, 219);
+}
+
+.topbar__right-logout {
+  display: flex;
+  align-items: center;
 }
