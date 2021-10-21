@@ -9,6 +9,8 @@ function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   let [color, setColor] = useState(post.likes.length);
+  const [modal, setModal] = useState("none");
+  const [modalColor, setModalColor] = useState("white");
   const [user, setUser] = useState({});
   const { user: currentUser } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -41,6 +43,13 @@ function Post({ post }) {
     setLike(isLiked ? like - 1 : like + 1);
     setColor(isLiked ? (color = "black") : (color = "red"));
     setIsLiked(!isLiked);
+  };
+
+  const handleModalClick = () => {
+    modal == "block" ? setModal("none") : setModal("block");
+    modal == "block"
+      ? setModalColor("white")
+      : setModalColor("rgb(219, 219, 219)");
   };
 
   const handleDeletePost = async (e) => {
@@ -80,16 +89,21 @@ function Post({ post }) {
             <span className="post__date">{format(post.createdAt)}</span>
           </div>
           <div className="post__top-right">
-            <span className="material-icons post__top-right-icon">
-              more_vert
-            </span>
-            <span className="material-icons post__top-right-icon">edit</span>
-            <span
-              className="material-icons post__top-right-icon"
-              onClick={handleDeletePost}
-            >
-              delete
-            </span>
+            {post.userId === currentUser._id && (
+              <span
+                className="material-icons post__top-right-icon"
+                onClick={handleModalClick}
+                style={{ backgroundColor: modalColor }}
+              >
+                more_vert
+              </span>
+            )}
+            <div className="post__more-modal" style={{ display: modal }}>
+              <div className="post__more-item">Edit post</div> <br />
+              <div className="post__more-item" onClick={handleDeletePost}>
+                Delete post
+              </div>
+            </div>
           </div>
         </div>
         <div className="post__center">
