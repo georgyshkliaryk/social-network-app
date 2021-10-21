@@ -52,7 +52,7 @@ const Login = () => {
               disabled={isFetching}
             >
               {isFetching ? (
-                <span class="material-icons-outlined sync-icon">sync</span>
+                <span className="material-icons-outlined sync-icon">sync</span>
               ) : (
                 "Log in"
               )}
@@ -61,7 +61,9 @@ const Login = () => {
             <Link to="/register">
               <button className="login-register__button">
                 {isFetching ? (
-                  <span class="material-icons-outlined sync-icon">sync</span>
+                  <span className="material-icons-outlined sync-icon">
+                    sync
+                  </span>
                 ) : (
                   "Create new Account"
                 )}

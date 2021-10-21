@@ -78,7 +78,7 @@ const Share = () => {
                 setFile(null);
               }}
             >
-              <span class="material-icons-outlined red">delete</span>
+              <span className="material-icons-outlined red">delete</span>
             </button>
           </div>
         )}

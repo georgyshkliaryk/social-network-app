@@ -14,7 +14,9 @@ const Topbar = () => {
     <div className="topbar__container">
       <div className="topbar__left">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="topbar__logo" title="Home">gSocial</span>
+          <span className="topbar__logo" title="Home">
+            gSocial
+          </span>
         </Link>
       </div>
       <div className="topbar__center">
@@ -60,7 +62,7 @@ const Topbar = () => {
             />
           </Link>
           <div className="topbar__logout" onClick={handleLogout} title="Logout">
-            <span class="material-icons">logout</span>
+            <span className="material-icons">logout</span>
           </div>
         </div>
       </div>

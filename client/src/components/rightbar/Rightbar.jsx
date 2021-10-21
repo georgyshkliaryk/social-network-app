@@ -18,10 +18,16 @@ function Rightbar({ user }) {
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get("/users/friends/" + user._id);
-        setFriends(friendList.data);
+          const friendList = await axios.get(
+            "/users/friends/" + user._id
+          );
+          setFriends(friendList.data);
       } catch (err) {
         console.log(err);
+        const friendList = await axios.get(
+          "/users/friends/" + currentUser._id
+        );
+        setFriends(friendList.data)
       }
     };
     getFriends();
@@ -66,8 +72,12 @@ function Rightbar({ user }) {
         <img src="/assets/ad.png" alt="ad" className="rightbar__ad" />
         <h4 className="rightbar__title">Friends Online</h4>
         <ul className="rightbar__friend__list">
-          {Users.map((u) => (
-            <OnlineFriends key={u.id} user={u} />
+          {friends.map((friend) => (
+            <OnlineFriends
+              id={friend._id}
+              username={friend.username}
+              userPicture={friend.profilePicture}
+            />
           ))}
         </ul>
       </>
@@ -81,9 +91,9 @@ function Rightbar({ user }) {
           <button className="rightbar__follow-btn" onClick={handleClick}>
             {followed ? "Unfollow" : "Follow"}
             {followed ? (
-              <span class="material-icons-outlined">remove</span>
+              <span className="material-icons-outlined">remove</span>
             ) : (
-              <span class="material-icons-outlined">add</span>
+              <span className="material-icons-outlined">add</span>
             )}
           </button>
         )}
