@@ -119,4 +119,22 @@ router.get("/friends/:userId", async (req, res) => {
   }
 });
 
+//get all users except myself
+router.get("/all/:userId", async (req, res) => {
+  try {
+    const users = await User.find({});
+    let userList = [];
+    let otherUsers = users.filter((user) => {
+      return user._id != req.params.userId;
+    });
+    otherUsers.map((user) => {
+      const { _id, username, profilePicture } = user;
+      userList.push({ _id, username, profilePicture });
+    });
+    res.status(200).json(userList);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

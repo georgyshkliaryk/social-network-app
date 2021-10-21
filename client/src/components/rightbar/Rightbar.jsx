@@ -74,7 +74,7 @@ function Rightbar({ user }) {
         <ul className="rightbar__friend__list">
           {friends.map((friend) => (
             <OnlineFriends
-              id={friend._id}
+              key={friend._id}
               username={friend.username}
               userPicture={friend.profilePicture}
             />

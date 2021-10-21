@@ -2,8 +2,29 @@ import { Link } from "react-router-dom";
 import { Users } from "../../dummyData";
 import Friends from "../Friends/Friends";
 import "./Sidebar.scss";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
-const Sidebar = () => {
+const Sidebar = ({ user }) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const { user: currentUser, dispatch } = useContext(AuthContext);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const userList = await axios.get("/users/all/" + currentUser._id);
+        setUsers(userList.data);
+        console.log(userList.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getUsers();
+  }, [user]);
+
   return (
     <div className="sidebar__container">
       <div className="sidebar__wrapper">
@@ -30,8 +51,8 @@ const Sidebar = () => {
         <button className="sidebar__button">Show more</button>
         <hr className="sidebar__hr" />
         <ul className="sidebar__friends">
-          {Users.map((u) => (
-            <Friends key={u.id} user={u} />
+          {users.map((u) => (
+            <Friends key={u._id} user={u} />
           ))}
         </ul>
       </div>

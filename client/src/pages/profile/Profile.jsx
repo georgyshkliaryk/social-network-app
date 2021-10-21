@@ -27,7 +27,7 @@ const Profile = () => {
     <>
       <Topbar />
       <div className="profile__container">
-        <Sidebar />
+        <Sidebar user={user}/>
         <div className="profile__right">
           <div className="profile__right-top">
             <div className="profile__cover">
