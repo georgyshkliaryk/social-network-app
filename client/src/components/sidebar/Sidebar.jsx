@@ -17,7 +17,6 @@ const Sidebar = ({ user }) => {
       try {
         const userList = await axios.get("/users/all/" + currentUser._id);
         setUsers(userList.data);
-        console.log(userList.data);
       } catch (err) {
         console.log(err);
       }
