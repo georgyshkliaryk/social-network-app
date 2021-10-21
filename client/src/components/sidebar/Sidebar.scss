@@ -72,7 +72,7 @@
   align-items: center;
   margin-bottom: 15px;
   padding-bottom: 5px;
-  margin-right: 50px;
+  margin-right: 20px;
   border-bottom: white solid 1px;
   cursor: pointer;
 }
@@ -91,4 +91,10 @@
 
 .sidebar__is-friend {
   margin-left: 25px;
+}
+
+.sidebar__friend-joined {
+  margin-left: 30px;
+  font-size: 13px;
+  margin: auto 0 auto auto;
 }

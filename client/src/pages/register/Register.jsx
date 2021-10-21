@@ -16,8 +16,7 @@ const Register = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     if (passwordAgain.current.value !== password.current.value) {
-      //passwordAgain.current.setCustomValidity("Passwords don't match!");
-      setWarning("Passwords doent match!");
+      setWarning("Passwords don't match!");
     } else {
       const user = {
         username: username.current.value,

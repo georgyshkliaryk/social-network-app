@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { format } from "timeago.js";
 
 function Friends({ user, isFriends }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -24,6 +25,7 @@ function Friends({ user, isFriends }) {
             people
           </span>
         )}
+        <div className="sidebar__friend-joined">Joined {format(user.createdAt)}</div>
       </li>
     </Link>
   );

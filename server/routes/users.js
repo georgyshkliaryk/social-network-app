@@ -128,8 +128,8 @@ router.get("/all/:userId", async (req, res) => {
       return user._id != req.params.userId;
     });
     otherUsers.map((user) => {
-      const { _id, username, profilePicture } = user;
-      userList.push({ _id, username, profilePicture });
+      const { _id, username, profilePicture, createdAt } = user;
+      userList.push({ _id, username, profilePicture, createdAt });
     });
     res.status(200).json(userList);
   } catch (err) {
