@@ -8,6 +8,8 @@ import { AuthContext } from "../../context/AuthContext";
 function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+  const url = window.location.pathname.split("/").pop();
+
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [friends, setFriends] = useState([]);
   const [followed, setFollowed] = useState(
@@ -33,6 +35,10 @@ function Rightbar({ user }) {
     };
     getFriends();
   }, [user]);
+
+  useEffect(() => {
+    setIsEdit(false);
+  }, [url]);
 
   useEffect(() => {
     setFollowed(currentUser.followings.includes(user?._id));
@@ -134,6 +140,9 @@ function Rightbar({ user }) {
                 className="material-icons rightbar__profile-edit-info rightbar__profile-edit-info"
                 title="Edit general information"
                 onClick={handleEditProfileInfo}
+                style={
+                  isEdit ? { visibility: "hidden" } : { visibility: "visible" }
+                }
               >
                 edit
               </span>
@@ -235,8 +244,20 @@ function Rightbar({ user }) {
                   defaultValue={user.age}
                 />
               </div>
-              <button type="submit">Save</button>
-              <button onClick={handleEditProfileInfoCancel}>Cancel</button>
+              <div className="rightbar__edit-info-btn-wrapper">
+                <button
+                  type="submit"
+                  className="rightbar__edit-info-btn submit"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={handleEditProfileInfoCancel}
+                  className="rightbar__edit-info-btn cancel"
+                >
+                  Cancel
+                </button>
+              </div>
             </form>
           )}
         </div>

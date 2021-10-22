@@ -2,7 +2,6 @@ import "./Topbar.scss";
 import { Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { useHistory } from "react-router-dom";
 
 const Topbar = () => {
   const { user } = useContext(AuthContext);

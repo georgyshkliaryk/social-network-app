@@ -158,7 +158,6 @@
   margin-left: 30px;
   display: block;
   cursor: pointer;
-  border: 1px solid lightgrey;
   border-radius: 5px;
   visibility: hidden;
 }
@@ -178,4 +177,37 @@
   .rightbar__profile-edit-info {
     visibility: visible;
   }
+}
+
+.rightbar__edit-info-btn-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.rightbar__edit-info-btn {
+  margin-left: 30px;
+  cursor: pointer;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 70px;
+  font-size: 15px;
+}
+
+.rightbar__edit-info-btn.submit {
+  background-color: rgb(167, 110, 214);
+  color: white;
+}
+
+.rightbar__edit-info-btn.submit:hover {
+  background-color: rgb(133, 87, 170);
+}
+
+.rightbar__edit-info-btn.cancel {
+  background-color: lightgray;
+  color: black;
+}
+
+.rightbar__edit-info-btn.cancel:hover {
+  background-color: rgb(182, 182, 182);
 }
