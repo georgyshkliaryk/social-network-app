@@ -1,10 +1,12 @@
 import "./Topbar.scss";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { useHistory } from "react-router-dom";
 
 const Topbar = () => {
   const { user } = useContext(AuthContext);
+  const url = window.location.pathname.split('/').pop();
 
   const [modal, setModal] = useState("none");
   const [modalColor, setModalColor] = useState("white");
@@ -13,6 +15,11 @@ const Topbar = () => {
     modal == "none" ? setModal("block") : setModal("none");
     modal == "none" ? setModalColor("yellow") : setModalColor("white");
   };
+
+  useEffect(() => {
+    setModal("none");
+    setModalColor("white");
+  }, [url]);
 
   const handleLogout = () => {
     localStorage.setItem("user", null);
