@@ -141,7 +141,7 @@ function Rightbar({ user }) {
                 title="Edit general information"
                 onClick={handleEditProfileInfo}
                 style={
-                  isEdit ? { visibility: "hidden" } : { visibility: "visible" }
+                  isEdit ? { display: "none" } : { display: "inline" }
                 }
               >
                 edit
