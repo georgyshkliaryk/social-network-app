@@ -24,6 +24,7 @@
   align-items: center;
   justify-content: space-around;
   color: white;
+  position: relative;
 }
 
 .topbar__link {
@@ -77,7 +78,7 @@
 }
 
 .topbar__image:hover {
-  border: 2px solid yellow;
+  border: 2px solid yellow !important;
 }
 
 .topbar__logo {
@@ -121,4 +122,31 @@
 .topbar__right-logout {
   display: flex;
   align-items: center;
+}
+
+.topbar__modal {
+  display: flex;
+  background-color: white;
+  align-items: center;
+  flex-direction: column;
+  color: black;
+  position: absolute;
+  top: 40px;
+  right: 25px;
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  border-radius: 10px;
+}
+
+.topbar__modal-item {
+  padding: 10px 10px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topbar__modal-item:hover {
+  cursor: pointer;
+  background-color: rgb(219, 219, 219);
+  border-radius: 10px;
 }

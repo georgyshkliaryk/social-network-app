@@ -49,6 +49,7 @@ const Sidebar = ({ user }) => {
         </ul>
         <button className="sidebar__button">Show more</button>
         <hr className="sidebar__hr" />
+        <div className="sidebar__friends-title">More people on gSocial</div>
         <ul className="sidebar__friends">
           {users.map((u) => (
             <Friends key={u._id} user={u} isFriends={currentUser.followings.includes(u?._id)}/>

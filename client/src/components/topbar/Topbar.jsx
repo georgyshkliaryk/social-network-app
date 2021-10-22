@@ -1,10 +1,18 @@
 import "./Topbar.scss";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 const Topbar = () => {
   const { user } = useContext(AuthContext);
+
+  const [modal, setModal] = useState("none");
+  const [modalColor, setModalColor] = useState("white");
+
+  const handleProfileModal = () => {
+    modal == "none" ? setModal("block") : setModal("none");
+    modal == "none" ? setModalColor("yellow") : setModalColor("white");
+  };
 
   const handleLogout = () => {
     localStorage.setItem("user", null);
@@ -51,20 +59,42 @@ const Topbar = () => {
           </div>
         </div>
         <div className="topbar__right-logout">
-          <Link to={`/profile/${user?.username}`}>
-            <img
-              src={
-                user?.profilePicture
-                  ? `/assets/${user?.profilePicture}`
-                  : "/assets/person/noAvatar.png"
-              }
-              alt="avatar"
-              className="topbar__image"
-              title="View Profile"
-            />
-          </Link>
-          <div className="topbar__logout" onClick={handleLogout} title="Logout">
-            <span className="material-icons">logout</span>
+          <img
+            src={
+              user?.profilePicture
+                ? `/assets/${user?.profilePicture}`
+                : "/assets/person/noAvatar.png"
+            }
+            alt="avatar"
+            className="topbar__image"
+            title="View Profile"
+            onClick={handleProfileModal}
+            style={{ borderColor: modalColor }}
+          />
+          <div className="topbar__modal" style={{ display: modal }}>
+            <Link
+              to={`/profile/${user?.username}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <div className="topbar__modal-item">
+                <div> View Profile </div>
+                <div>
+                  <span class="material-icons">account_circle</span>
+                </div>
+              </div>
+            </Link>
+            <div className="topbar__modal-item">
+              <div> Settings </div>
+              <div>
+                <span class="material-icons">settings</span>
+              </div>
+            </div>
+            <div className="topbar__modal-item" onClick={handleLogout}>
+              <div>Logout </div>
+              <div>
+                <span class="material-icons">logout</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
