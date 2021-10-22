@@ -2,21 +2,32 @@ import "./Topbar.scss";
 import { Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 
 const Topbar = () => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  const { user } = useContext(AuthContext);
+  const { user: currentUser } = useContext(AuthContext);
   const url = window.location.pathname.split("/").pop();
 
   const [modal, setModal] = useState("none");
   const [modalColor, setModalColor] = useState("white");
+  const [user, setUser] = useState({});
 
   const handleProfileModal = () => {
     modal == "none" ? setModal("block") : setModal("none");
     modal == "none" ? setModalColor("yellow") : setModalColor("white");
     console.log(user);
   };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?userId=${currentUser._id}`);
+      setUser(res.data);
+    };
+
+    fetchUser();
+  }, [user]);
 
   useEffect(() => {
     setModal("none");

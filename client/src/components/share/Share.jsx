@@ -5,13 +5,21 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Share = () => {
-  const { user } = useContext(AuthContext);
+  const { user: currentUser } = useContext(AuthContext);
   const desc = useRef();
   const [file, setFile] = useState(null);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [warning, setWarning] = useState("");
+  const [user, setUser] = useState({});
 
-  useEffect(() => {}, [user]);
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?userId=${currentUser._id}`);
+      setUser(res.data);
+    };
+
+    fetchUser();
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

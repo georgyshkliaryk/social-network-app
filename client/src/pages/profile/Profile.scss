@@ -1,67 +1,67 @@
 .profile__container {
-    display: flex;
+  display: flex;
 }
 
 .profile__right {
-    flex: 13;
+  flex: 13;
 }
 
 .profile__right-bottom {
-    display: flex;
+  display: flex;
 }
 
 .profile__cover {
-    height: 320px;
-    position: relative;
+  height: 320px;
+  position: relative;
 }
 
 .profile__cover-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
 .profile__user-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 150px;
-    border: 3px solid white;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 150px;
+  border: 3px solid white;
 }
 
 .profile__info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile__info-name {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .profile__info-desc {
-    padding: 25px;
-    text-align: center;
+  padding: 25px;
+  text-align: center;
 }
 
-.profile__photo-label {
-   // z-index: -100;
-   // position: relative;
-}
+// .profile__photo-label {
+//    // z-index: -100;
+//    // position: relative;
+// }
 
-.profile__photo-label-text {
-  //  position: absolute;
-}
+// .profile__photo-label-text {
+//   //  position: absolute;
+// }
 
 .profile__photo-label:hover {
-    background-color:#000;
-    opacity:0.5;
-    cursor: pointer;
-    z-index: 4;
+  background-color: #000;
+  opacity: 0.5;
+  cursor: pointer;
+  z-index: 4;
 }
