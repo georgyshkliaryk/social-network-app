@@ -69,7 +69,7 @@ function Post({ post }) {
       <div className="post__wrapper">
         <div className="post__top">
           <div className="post__top-left">
-            <Link to={`profile/${user.username}`}>
+            <Link to={`/profile/${user.username}`}>
               <img
                 className="post__profile-image"
                 src={
@@ -81,7 +81,7 @@ function Post({ post }) {
               />
             </Link>
             <Link
-              to={`profile/${user.username}`}
+              to={`/profile/${user.username}`}
               style={{ textDecoration: "none", color: "black" }}
             >
               <span className="post__username">{user.username}</span>

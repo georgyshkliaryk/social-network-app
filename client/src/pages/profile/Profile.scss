@@ -49,3 +49,19 @@
     padding: 25px;
     text-align: center;
 }
+
+.profile__photo-label {
+   // z-index: -100;
+   // position: relative;
+}
+
+.profile__photo-label-text {
+  //  position: absolute;
+}
+
+.profile__photo-label:hover {
+    background-color:#000;
+    opacity:0.5;
+    cursor: pointer;
+    z-index: 4;
+}

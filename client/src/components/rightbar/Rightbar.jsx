@@ -140,9 +140,7 @@ function Rightbar({ user }) {
                 className="material-icons rightbar__profile-edit-info rightbar__profile-edit-info"
                 title="Edit general information"
                 onClick={handleEditProfileInfo}
-                style={
-                  isEdit ? { display: "none" } : { display: "inline" }
-                }
+                style={isEdit ? { display: "none" } : { display: "inline" }}
               >
                 edit
               </span>
@@ -216,9 +214,9 @@ function Rightbar({ user }) {
                   ref={relationship}
                   defaultValue={user.relationship}
                 >
+                  <option value="3">Not selected</option>
                   <option value="1">Single</option>
                   <option value="2">Married</option>
-                  <option value="3">Not selected</option>
                 </select>
               </div>
               <div className="rightbar__info-item">
@@ -230,9 +228,9 @@ function Rightbar({ user }) {
                   ref={gender}
                   defaultValue={user.gender}
                 >
+                  <option value="3">Not selected</option>
                   <option value="1">Male</option>
                   <option value="2">Female</option>
-                  <option value="3">Not selected</option>
                 </select>
               </div>
               <div className="rightbar__info-item">

@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "./Share.scss";
 import axios from "axios";
@@ -10,6 +10,8 @@ const Share = () => {
   const [file, setFile] = useState(null);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [warning, setWarning] = useState("");
+
+  useEffect(() => {}, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

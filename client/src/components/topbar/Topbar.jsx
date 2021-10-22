@@ -4,6 +4,8 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 const Topbar = () => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const { user } = useContext(AuthContext);
   const url = window.location.pathname.split("/").pop();
 
@@ -13,6 +15,7 @@ const Topbar = () => {
   const handleProfileModal = () => {
     modal == "none" ? setModal("block") : setModal("none");
     modal == "none" ? setModalColor("yellow") : setModalColor("white");
+    console.log(user);
   };
 
   useEffect(() => {
@@ -68,8 +71,8 @@ const Topbar = () => {
           <img
             src={
               user?.profilePicture
-                ? `/assets/${user?.profilePicture}`
-                : "/assets/person/noAvatar.png"
+                ? PF + user?.profilePicture
+                : PF + "person/noAvatar.png"
             }
             alt="avatar"
             className="topbar__image"
