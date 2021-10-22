@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 const Topbar = () => {
   const { user } = useContext(AuthContext);
-  const url = window.location.pathname.split('/').pop();
+  const url = window.location.pathname.split("/").pop();
 
   const [modal, setModal] = useState("none");
   const [modalColor, setModalColor] = useState("white");
@@ -86,20 +86,20 @@ const Topbar = () => {
               <div className="topbar__modal-item">
                 <div> View Profile </div>
                 <div>
-                  <span class="material-icons">account_circle</span>
+                  <span className="material-icons">account_circle</span>
                 </div>
               </div>
             </Link>
             <div className="topbar__modal-item">
               <div> Settings </div>
               <div>
-                <span class="material-icons">settings</span>
+                <span className="material-icons">settings</span>
               </div>
             </div>
             <div className="topbar__modal-item" onClick={handleLogout}>
               <div>Logout </div>
               <div>
-                <span class="material-icons">logout</span>
+                <span className="material-icons">logout</span>
               </div>
             </div>
           </div>

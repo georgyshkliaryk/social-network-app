@@ -80,7 +80,6 @@
 .rightbar__profile-title {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .rightbar__following-image {
@@ -118,8 +117,8 @@
   cursor: pointer;
   font-weight: bold;
   text-align: center;
- // border: 2px solid rgb(167, 110, 214);
- // border-radius: 10px;
+  // border: 2px solid rgb(167, 110, 214);
+  // border-radius: 10px;
 }
 
 .rightbar__following:hover {
@@ -147,4 +146,36 @@
 
 .rightbar__follow-btn:hover {
   background-color: rgb(133, 87, 170);
+}
+
+.rightbar__profile-title-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.rightbar__profile-edit-info {
+  margin-left: 30px;
+  display: block;
+  cursor: pointer;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  visibility: hidden;
+}
+
+.rightbar__profile-edit-info:hover {
+  color: rgb(167, 110, 214);
+  transform: scale(1.2);
+}
+
+.rightbar__info-input {
+  border: none;
+  border-bottom: 1px solid grey;
+  font-style: italic;
+}
+
+.rightbar__info-wrapper:hover {
+  .rightbar__profile-edit-info {
+    visibility: visible;
+  }
 }

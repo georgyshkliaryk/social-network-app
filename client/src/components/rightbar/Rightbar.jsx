@@ -1,7 +1,6 @@
 import "./Rightbar.scss";
-import { Users } from "../../dummyData";
 import OnlineFriends from "../onlineFriends/OnlineFriends";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -14,20 +13,22 @@ function Rightbar({ user }) {
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user?.id)
   );
+  const [isEdit, setIsEdit] = useState(false);
+  const city = useRef();
+  const from = useRef();
+  const relationship = useRef();
+  const gender = useRef();
+  const age = useRef();
 
   useEffect(() => {
     const getFriends = async () => {
       try {
-          const friendList = await axios.get(
-            "/users/friends/" + user._id
-          );
-          setFriends(friendList.data);
+        const friendList = await axios.get("/users/friends/" + user._id);
+        setFriends(friendList.data);
       } catch (err) {
         console.log(err);
-        const friendList = await axios.get(
-          "/users/friends/" + currentUser._id
-        );
-        setFriends(friendList.data)
+        const friendList = await axios.get("/users/friends/" + currentUser._id);
+        setFriends(friendList.data);
       }
     };
     getFriends();
@@ -54,6 +55,34 @@ function Rightbar({ user }) {
       console.log(err);
     }
     setFollowed(!followed);
+  };
+
+  const handleEditProfileInfo = (e) => {
+    e.preventDefault();
+    setIsEdit(true);
+  };
+
+  const handleEditProfileInfoCancel = (e) => {
+    e.preventDefault();
+    setIsEdit(false);
+  };
+
+  const handleEditProfileInfoSubmit = async (e) => {
+    e.preventDefault();
+    const editedInfo = {
+      city: city.current.value,
+      from: from.current.value,
+      relationship: relationship.current.value,
+      gender: gender.current.value,
+      age: age.current.value,
+      userId: currentUser._id,
+    };
+    try {
+      await axios.put("/users/" + currentUser._id, editedInfo);
+    } catch (err) {
+      console.log(err);
+    }
+    window.location.reload();
   };
 
   const HomeRightbar = () => {
@@ -97,31 +126,126 @@ function Rightbar({ user }) {
             )}
           </button>
         )}
-        <h4 className="rightbar__profile-title">User Information</h4>
-        <div className="rightbar__info">
-          <div className="rightbar__info-item">
-            <span className="rightbar__info-key">City:</span>
-            <span className="rightbar__info-value">{user.city || "-"}</span>
+        <div className="rightbar__info-wrapper">
+          <div className="rightbar__profile-title-wrapper">
+            <h4 className="rightbar__profile-title">User Information</h4>
+            {user.username === currentUser.username && (
+              <span
+                className="material-icons rightbar__profile-edit-info rightbar__profile-edit-info"
+                title="Edit general information"
+                onClick={handleEditProfileInfo}
+              >
+                edit
+              </span>
+            )}
           </div>
-          <div className="rightbar__info-item">
-            <span className="rightbar__info-key">From:</span>
-            <span className="rightbar__info-value">{user.from || "-"}</span>
-          </div>
-          <div className="rightbar__info-item">
-            <span className="rightbar__info-key">Relationship:</span>
-            <span className="rightbar__info-value">
-              {user.relationship === 1
-                ? "Single"
-                : user.relationship === 2
-                ? "Married"
-                : "-"}
-            </span>
-          </div>
+
+          {!isEdit ? (
+            <div className="rightbar__info">
+              <div className="rightbar__info-item">
+                <span className="rightbar__info-key">City:</span>
+                <span className="rightbar__info-value">{user.city || "-"}</span>
+              </div>
+              <div className="rightbar__info-item">
+                <span className="rightbar__info-key">From:</span>
+                <span className="rightbar__info-value">{user.from || "-"}</span>
+              </div>
+              <div className="rightbar__info-item">
+                <span className="rightbar__info-key">Relationship:</span>
+                <span className="rightbar__info-value">
+                  {user.relationship === 1
+                    ? "Single"
+                    : user.relationship === 2
+                    ? "Married"
+                    : "-"}
+                </span>
+              </div>
+              <div className="rightbar__info-item">
+                <span className="rightbar__info-key">Gender:</span>
+                <span className="rightbar__info-value">
+                  {user.gender === 1
+                    ? "Male"
+                    : user.gender === 2
+                    ? "Female"
+                    : "-"}
+                </span>
+              </div>
+              <div className="rightbar__info-item">
+                <span className="rightbar__info-key">Age:</span>
+                <span className="rightbar__info-value">{user.age || "-"}</span>
+              </div>
+            </div>
+          ) : (
+            <form
+              className="rightbar__info"
+              onSubmit={handleEditProfileInfoSubmit}
+            >
+              <div className="rightbar__info-item">
+                <span className="rightbar__info-key">City:</span>
+                <input
+                  type="text"
+                  className="rightbar__info-input"
+                  ref={city}
+                  defaultValue={user.city}
+                />
+              </div>
+              <div className="rightbar__info-item">
+                <span className="rightbar__info-key">From:</span>
+                <input
+                  type="text"
+                  className="rightbar__info-input"
+                  ref={from}
+                  defaultValue={user.from}
+                />
+              </div>
+              <div className="rightbar__info-item">
+                <span className="rightbar__info-key">Relationship:</span>
+                <select
+                  name="relation"
+                  id="relation"
+                  className="rightbar__info-select"
+                  ref={relationship}
+                  defaultValue={user.relationship}
+                >
+                  <option value="1">Single</option>
+                  <option value="2">Married</option>
+                  <option value="3">Not selected</option>
+                </select>
+              </div>
+              <div className="rightbar__info-item">
+                <span className="rightbar__info-key">Gender:</span>
+                <select
+                  name="gender"
+                  id="gender"
+                  className="rightbar__info-select"
+                  ref={gender}
+                  defaultValue={user.gender}
+                >
+                  <option value="1">Male</option>
+                  <option value="2">Female</option>
+                  <option value="3">Not selected</option>
+                </select>
+              </div>
+              <div className="rightbar__info-item">
+                <span className="rightbar__info-key">Age:</span>
+                <input
+                  type="text"
+                  className="rightbar__info-input"
+                  ref={age}
+                  defaultValue={user.age}
+                />
+              </div>
+              <button type="submit">Save</button>
+              <button onClick={handleEditProfileInfoCancel}>Cancel</button>
+            </form>
+          )}
         </div>
+
         <h4 className="rightbar__title">Friends</h4>
         <div className="rightbar__followings">
           {friends.map((friend) => (
             <Link
+              key={friend._id}
               to={`/profile/${friend.username}`}
               style={{ textDecoration: "none", color: "black" }}
             >
