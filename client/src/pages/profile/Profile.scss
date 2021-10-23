@@ -50,18 +50,63 @@
   text-align: center;
 }
 
-// .profile__photo-label {
-//    // z-index: -100;
-//    // position: relative;
-// }
-
-// .profile__photo-label-text {
-//   //  position: absolute;
-// }
-
 .profile__photo-label:hover {
   background-color: #000;
   opacity: 0.5;
   cursor: pointer;
   z-index: 4;
+}
+
+.profile__photo-label:hover ~ .profile__update-photo-btn {
+  visibility: visible;
+}
+
+.profile__update-photo-btn {
+  position: absolute;
+  top: 73%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  cursor: pointer;
+  pointer-events: none;
+  span {
+    font-size: 50px;
+  }
+}
+
+.profile__update-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+}
+
+.profile__update-btn {
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 170px;
+  margin-top: 10px;
+}
+
+.profile__update-btn.submit {
+  background-color: rgb(167, 110, 214);
+  color: white;
+  margin-right: 15px;
+}
+
+.profile__update-btn.submit:hover {
+  background-color: rgb(133, 87, 170);
+}
+
+.profile__update-btn.cancel {
+  background-color: lightgray;
+  color: black;
+  margin-left: 15px;
+}
+
+.profile__update-btn.cancel:hover {
+  background-color: rgb(182, 182, 182);
 }

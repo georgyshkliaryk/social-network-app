@@ -65,20 +65,45 @@ const Profile = () => {
                 }
                 alt="cover"
               />
-              <div className="wrap">
-                <label htmlFor="update-photo" className="profile__photo-label">
+              {file ? (
+                <div>
                   <img
                     className="profile__user-image"
-                    src={
-                      user.profilePicture
-                        ? PF + user.profilePicture
-                        : PF + "person/noAvatar.png"
-                    }
+                    src={URL.createObjectURL(file)}
                     alt="avatar"
-                    // onClick={handleChangePhoto}
                   />
-                </label>
-              </div>
+                  <div className="profile__update-btn-container">
+                    <button className="profile__update-btn submit" onClick={handleChangePhoto}>
+                      Save new photo
+                    </button>
+                    <button className="profile__update-btn cancel" onClick={() => setFile(null)}>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <label
+                    htmlFor="update-photo"
+                    className="profile__photo-label"
+                    title="Set new profile picture"
+                  >
+                    <img
+                      className="profile__user-image"
+                      src={
+                        user.profilePicture
+                          ? PF + user.profilePicture
+                          : PF + "person/noAvatar.png"
+                      }
+                      alt="avatar"
+                    />
+                  </label>
+                  <div class="profile__update-photo-btn">
+                    <span class="material-icons">file_upload</span>
+                  </div>
+                </div>
+              )}
+
               <input
                 type="file"
                 id="update-photo"
@@ -86,12 +111,30 @@ const Profile = () => {
                 onChange={(e) => {
                   setFile(e.target.files[0]);
                 }}
-                // onClick={(e) => (e.target.value = null)}
-                // style={{ display: "none" }}
+                style={{ display: "none" }}
               />
-              <button onClick={handleChangePhoto}>update photo</button>
             </div>
-            <div className="profile__info">
+            {/* {file && (
+              <div className="share__img-container">
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt="preview"
+                  className="profile__user-image"
+                />
+                <button
+                  className="share__cancel-btn"
+                  onClick={() => {
+                    setFile(null);
+                  }}
+                >
+                  <span className="material-icons-outlined red">delete</span>
+                </button>
+              </div>
+            )} */}
+            <div
+              className="profile__info"
+              style={file && { marginTop: "40px" }}
+            >
               <h4 className="profile__info-name">{user.username}</h4>
               <span className="profile__info-desc">{user.desc}</span>
             </div>

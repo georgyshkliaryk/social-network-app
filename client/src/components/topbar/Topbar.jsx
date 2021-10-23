@@ -27,7 +27,7 @@ const Topbar = () => {
     };
 
     fetchUser();
-  }, [user]);
+  }, [user.profilePicture, user.coverPicture]);
 
   useEffect(() => {
     setModal("none");

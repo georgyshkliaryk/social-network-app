@@ -19,7 +19,7 @@ const Share = () => {
     };
 
     fetchUser();
-  }, [user]);
+  }, [user.profilePicture, user.coverPicture]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
