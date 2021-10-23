@@ -65,43 +65,62 @@ const Profile = () => {
                 }
                 alt="cover"
               />
-              {file ? (
-                <div>
-                  <img
-                    className="profile__user-image"
-                    src={URL.createObjectURL(file)}
-                    alt="avatar"
-                  />
-                  <div className="profile__update-btn-container">
-                    <button className="profile__update-btn submit" onClick={handleChangePhoto}>
-                      Save new photo
-                    </button>
-                    <button className="profile__update-btn cancel" onClick={() => setFile(null)}>
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <label
-                    htmlFor="update-photo"
-                    className="profile__photo-label"
-                    title="Set new profile picture"
-                  >
+
+              {user._id === currentUser._id ? (
+                file ? (
+                  <div>
                     <img
                       className="profile__user-image"
-                      src={
-                        user.profilePicture
-                          ? PF + user.profilePicture
-                          : PF + "person/noAvatar.png"
-                      }
+                      src={URL.createObjectURL(file)}
                       alt="avatar"
                     />
-                  </label>
-                  <div class="profile__update-photo-btn">
-                    <span class="material-icons">file_upload</span>
+                    <div className="profile__update-btn-container">
+                      <button
+                        className="profile__update-btn submit"
+                        onClick={handleChangePhoto}
+                      >
+                        Save new photo
+                      </button>
+                      <button
+                        className="profile__update-btn cancel"
+                        onClick={() => setFile(null)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div>
+                    <label
+                      htmlFor="update-photo"
+                      className="profile__photo-label"
+                      title="Set new profile picture"
+                    >
+                      <img
+                        className="profile__user-image"
+                        src={
+                          user.profilePicture
+                            ? PF + user.profilePicture
+                            : PF + "person/noAvatar.png"
+                        }
+                        alt="avatar"
+                      />
+                    </label>
+                    <div class="profile__update-photo-btn">
+                      <span class="material-icons">file_upload</span>
+                    </div>
+                  </div>
+                )
+              ) : (
+                <img
+                  className="profile__user-image"
+                  src={
+                    user.profilePicture
+                      ? PF + user.profilePicture
+                      : PF + "person/noAvatar.png"
+                  }
+                  alt="avatar"
+                />
               )}
 
               <input
@@ -114,23 +133,6 @@ const Profile = () => {
                 style={{ display: "none" }}
               />
             </div>
-            {/* {file && (
-              <div className="share__img-container">
-                <img
-                  src={URL.createObjectURL(file)}
-                  alt="preview"
-                  className="profile__user-image"
-                />
-                <button
-                  className="share__cancel-btn"
-                  onClick={() => {
-                    setFile(null);
-                  }}
-                >
-                  <span className="material-icons-outlined red">delete</span>
-                </button>
-              </div>
-            )} */}
             <div
               className="profile__info"
               style={file && { marginTop: "40px" }}
