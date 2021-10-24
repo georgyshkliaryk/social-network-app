@@ -25,7 +25,7 @@ const Share = () => {
     e.preventDefault();
     const newPost = {
       userId: user._id,
-      desc: desc.current.value,
+      desc: desc.current.value.trim(),
     };
     if (file) {
       const data = new FormData();
@@ -41,7 +41,7 @@ const Share = () => {
     }
 
     try {
-      if (desc.current.value != "" || file) {
+      if (desc.current.value.trim() != "" || file) {
         setWarning("");
         await axios.post("/posts", newPost);
         window.location.reload();

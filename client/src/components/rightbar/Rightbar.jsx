@@ -76,11 +76,11 @@ function Rightbar({ user }) {
   const handleEditProfileInfoSubmit = async (e) => {
     e.preventDefault();
     const editedInfo = {
-      city: city.current.value,
-      from: from.current.value,
+      city: city.current.value.trim(),
+      from: from.current.value.trim(),
       relationship: relationship.current.value,
       gender: gender.current.value,
-      age: age.current.value,
+      age: age.current.value.trim(),
       userId: currentUser._id,
     };
     try {

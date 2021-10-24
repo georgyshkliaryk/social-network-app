@@ -157,13 +157,32 @@
 .profile__info-desc {
   display: flex;
   align-items: center;
-  margin-right: 30px;
+  margin-right: 45px;
 }
 
 .profile__desc-textarea {
-  margin-left: 30px;
+  margin-left: 45px;
   width: 700px;
   border: none;
   border-bottom: 1px solid black;
   font-style: italic;
+}
+
+.profile__add-desc-btn {
+  margin-left: 45px;
+  background-color: lightgray;
+  border: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 3px 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  span {
+    margin-right: 10px;
+  }
+}
+
+.profile__add-desc-btn:hover {
+  background-color: rgb(182, 182, 182);
 }

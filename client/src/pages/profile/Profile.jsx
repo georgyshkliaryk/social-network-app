@@ -78,7 +78,7 @@ const Profile = () => {
   const handleEditDescSubmit = async (e) => {
     e.preventDefault();
     const editedInfo = {
-      desc: desc.current.value,
+      desc: desc.current.value.trim(),
       userId: currentUser._id,
     };
     try {
@@ -261,14 +261,29 @@ const Profile = () => {
               <h4 className="profile__info-name">{user.username}</h4>
 
               <div className="profile__info-desc">
-                {user._id === currentUser._id && (
-                  <span
-                    className="material-icons profile__edit-desc"
-                    title="Edit description"
-                    onClick={handleEditDesc}
-                    style={isEdit ? { display: "none" } : { display: "inline" }}
-                  >edit</span>
-                )}
+                {user._id === currentUser._id &&
+                  (user.desc === "" ? (
+                    <button
+                      className="profile__add-desc-btn"
+                      onClick={handleEditDesc}
+                      style={
+                        isEdit ? { display: "none" } : { display: "flex" }
+                      }
+                    >
+                      <span class="material-icons">add</span>Add description
+                    </button>
+                  ) : (
+                    <span
+                      className="material-icons profile__edit-desc"
+                      title="Edit description"
+                      onClick={handleEditDesc}
+                      style={
+                        isEdit ? { display: "none" } : { display: "inline" }
+                      }
+                    >
+                      edit
+                    </span>
+                  ))}
                 {!isEdit ? (
                   user.desc
                 ) : (

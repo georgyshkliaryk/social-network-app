@@ -19,17 +19,21 @@ const Register = () => {
       setWarning("Passwords don't match!");
     } else {
       const user = {
-        username: username.current.value,
+        username: username.current.value.trim(),
         email: email.current.value,
-        password: password.current.value,
+        password: password.current.value.trim(),
       };
-      try {
-        await axios.post("/auth/register", user);
-        setWarning("\xa0");
-        history.push("/login");
-      } catch (err) {
-        setWarning("Username or Email is already taken!");
-        console.log(err);
+      if (user.username === "" || user.password === "") {
+        setWarning("Username or Password shouldn't be empty!");
+      } else {
+        try {
+          await axios.post("/auth/register", user);
+          setWarning("\xa0");
+          history.push("/login");
+        } catch (err) {
+          setWarning("Username or Email is already taken!");
+          console.log(err);
+        }
       }
     }
   };
