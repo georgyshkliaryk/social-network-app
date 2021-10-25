@@ -12,6 +12,7 @@ function Rightbar({ user }) {
 
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [friends, setFriends] = useState([]);
+  const [followers, setFollowers] = useState([]);
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user?.id)
   );
@@ -34,6 +35,22 @@ function Rightbar({ user }) {
       }
     };
     getFriends();
+  }, [user]);
+
+  useEffect(() => {
+    const getFollowers = async () => {
+      try {
+        const followersList = await axios.get("/users/followers/" + user._id);
+        setFollowers(followersList.data);
+      } catch (err) {
+        console.log(err);
+        const followersList = await axios.get(
+          "/users/followers/" + currentUser._id
+        );
+        setFollowers(followersList.data);
+      }
+    };
+    getFollowers();
   }, [user]);
 
   useEffect(() => {
@@ -260,7 +277,11 @@ function Rightbar({ user }) {
           )}
         </div>
 
-        <h4 className="rightbar__title">Friends</h4>
+        {user.username === currentUser.username ? (
+          <h4 className="rightbar__title">Users You Follow</h4>
+        ) : (
+          <h4 className="rightbar__title">Users {user.username} Follows</h4>
+        )}
         <div className="rightbar__followings">
           {friends.map((friend) => (
             <Link
@@ -281,6 +302,29 @@ function Rightbar({ user }) {
                 <span className="rightbar__following-name">
                   {friend.username}
                 </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <h4 className="rightbar__title followers">Followers</h4>
+        <div className="rightbar__followings">
+          {followers.map((f) => (
+            <Link
+              key={f._id}
+              to={`/profile/${f.username}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <div className="rightbar__following">
+                <img
+                  src={
+                    f.profilePicture
+                      ? PF + f.profilePicture
+                      : PF + "person/noAvatar.png"
+                  }
+                  alt="friend"
+                  className="rightbar__following-image"
+                />
+                <span className="rightbar__following-name">{f.username}</span>
               </div>
             </Link>
           ))}

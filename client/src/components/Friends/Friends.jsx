@@ -21,7 +21,7 @@ function Friends({ user, isFriends }) {
         />
         <span className="sidebar__friend__name">{user.username}</span>
         {isFriends && (
-          <span className="material-icons sidebar__is-friend" title="Friends">
+          <span className="material-icons sidebar__is-friend" title="In Followings">
             people
           </span>
         )}

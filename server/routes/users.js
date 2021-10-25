@@ -117,6 +117,26 @@ router.get("/friends/:userId", async (req, res) => {
   }
 });
 
+//get all followers of a user
+router.get("/followers/:userId", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    const followers = await Promise.all(
+      user.followers.map((followerId) => {
+        return User.findById(followerId);
+      })
+    );
+    let followersList = [];
+    followers.map((follower) => {
+      const { _id, username, profilePicture } = follower;
+      followersList.push({ _id, username, profilePicture });
+    });
+    res.status(200).json(followersList);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //get all users except myself
 router.get("/all/:userId", async (req, res) => {
   try {
